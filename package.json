@@ -1,0 +1,37 @@
+{
+  "name": "n8n-nodes-version",
+  "version": "0.1.0",
+  "description": "n8n node to output the current n8n version",
+  "keywords": [
+    "n8n-community-node-package"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "author": {
+    "name": "Community",
+    "email": "example@example.com"
+  },
+  "scripts": {
+    "build": "tsc && gulp build:icons",
+    "dev": "tsc --watch",
+    "lint": "tslint -p tsconfig.json -c tslint.json",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "main": "index.js",
+  "n8n": {
+    "nodes": [
+      "dist/nodes/N8nVersion/N8nVersion.node.js"
+    ]
+  },
+  "devDependencies": {
+    "@types/node": "^14.14.31",
+    "gulp": "^4.0.2",
+    "n8n-core": "^0.116.0",
+    "n8n-workflow": "^0.114.0",
+    "tslint": "^6.1.2",
+    "typescript": "^4.1.3"
+  },
+  "peerDependencies": {
+    "n8n-workflow": "*"
+  }
+}
