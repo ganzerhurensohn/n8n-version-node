@@ -48,7 +48,15 @@ export class N8nVersion implements INodeType {
 		},
 		inputs: ['main'],
 		outputs: ['main'],
-		properties: [],
+		properties: [
+			{
+				displayName: 'Returns if Latest',
+				name: 'returnIsLatest',
+				type: 'boolean',
+				default: true,
+				description: 'Whether to return if the current version is the latest',
+			},
+		],
 	};
 
 	async execute(this: IExecuteFunctions): Promise<INodeExecutionData[][]> {
@@ -81,20 +89,31 @@ export class N8nVersion implements INodeType {
 			currentVersion = 'unknown';
 		}
 
-		const latestVersion = await getLatestN8nVersion();
+		const returnIsLatest = this.getNodeParameter('returnIsLatest', 0) as boolean;
+		let latestVersion: string | undefined;
+		let isLatest: boolean | undefined;
 
-		const isLatest =
-			currentVersion !== 'unknown' &&
-			latestVersion !== 'unknown' &&
-			currentVersion === latestVersion;
+		if (returnIsLatest) {
+			latestVersion = await getLatestN8nVersion();
+
+			isLatest =
+				currentVersion !== 'unknown' &&
+				latestVersion !== 'unknown' &&
+				currentVersion === latestVersion;
+		}
 
 		for (let i = 0; i < items.length; i++) {
+			const json: { [key: string]: any } = {
+				currentVersion,
+			};
+
+			if (returnIsLatest) {
+				json.latestVersion = latestVersion;
+				json.isLatest = isLatest;
+			}
+
 			returnData.push({
-				json: {
-					currentVersion,
-					latestVersion,
-					isLatest,
-				},
+				json,
 			});
 		}
 
