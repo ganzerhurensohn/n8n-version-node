@@ -1,6 +1,7 @@
 # n8n-version-node
 
-> [!NOTE] > [n8n](https://n8n.io/) is a [fair-code licensed](https://docs.n8n.io/reference/license/) workflow automation platform.
+> [!NOTE] 
+> [n8n](https://n8n.io/) is a [fair-code licensed](https://docs.n8n.io/reference/license/) workflow automation platform.
 >
 > [Icon](https://icons8.com/icon/9sDRgODM0vNc/refresh) is from [icons8.com](https://icons8.com/)
 
