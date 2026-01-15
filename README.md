@@ -9,7 +9,7 @@
 - Boolean if the current installed n8n version is the newest *latest* release version.
 
 ## Output
-#### The newest version installed
+#### The newest version is installed
 ```json
 [
   {
@@ -19,7 +19,7 @@
   }
 ]
 ```
-#### Not the newest version installed
+#### The newest version is not installed
 ```json
 [
   {
